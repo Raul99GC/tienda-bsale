@@ -9,7 +9,7 @@ const getAllProducts = async (name, id) => {
     if (name) {
         //? El tipo de consulta afecta el formato de los resultados antes de devolverlos.
         //? en pocas palabras, evitamos que nos retorne 2 arreglos xD
-        const data = await db.query(`SELECT * FROM product WHERE name LIKE ${name}`, { type: QueryTypes.SELECT });
+        const data = await db.query(`SELECT * FROM product WHERE name LIKE '%${name}%'`, { type: QueryTypes.SELECT });
         return data;
     } else if (id) {
         const data = await db.query(`SELECT * FROM product WHERE id LIKE ${id}`, { type: QueryTypes.SELECT });
