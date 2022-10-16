@@ -1,5 +1,6 @@
 //* Dependencias
 const express = require('express');
+const cors = require('cors');
 
 //*Archivos de rutas
 const productRouter = require('./products/products.router').router;
@@ -8,6 +9,7 @@ const categoryRouter = require('./categories/categories.router').router;
 
 //* Configuraciones iniciales
 const app = express();
+app.use(cors());
 const { db } = require('./utils/database');
 // initModels()
 
