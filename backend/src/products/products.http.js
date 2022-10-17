@@ -3,6 +3,7 @@ const productControllers = require('./products.controllers');
 
 const getAll = (req, res) => {
     const { name, id, category } = req.query
+    console.log('+++++++++++++' + category)
     productControllers.getAllProducts(name, id, category)
         .then(response => {
             if (response.length > 0) {
