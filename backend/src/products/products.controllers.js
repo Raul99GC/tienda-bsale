@@ -2,7 +2,7 @@ const { db } = require('../utils/database');
 const { QueryTypes } = require('sequelize');
 
 
-const getAllProducts = async (name, id) => {
+const getAllProducts = async (name, id, category) => {
     /* 
     Tenga en cuenta que, dado que se trata de una consulta sin formato, los metadatos son específicos del dialecto. Algunos dialectos devuelven los metadatos "dentro" del objeto de resultados (como propiedades en una matriz). Sin embargo, siempre se devolverán dos argumentos, pero para MSSQL y MySQL serán dos referencias al mismo objeto.
     */
@@ -13,6 +13,9 @@ const getAllProducts = async (name, id) => {
         return data;
     } else if (id) {
         const data = await db.query(`SELECT * FROM product WHERE id LIKE ${id}`, { type: QueryTypes.SELECT });
+        return data;
+    } else if(category) {
+        const data = await db.query(`SELECT * FROM product WHERE name LIKE '%${category}%'`, { type: QueryTypes.SELECT });
         return data;
     } else {
         const data = await db.query(`SELECT * FROM product`,  { type: QueryTypes.SELECT });
