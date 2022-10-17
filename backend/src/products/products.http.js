@@ -2,8 +2,8 @@ const productControllers = require('./products.controllers');
 
 
 const getAll = (req, res) => {
-    const { name, id } = req.query
-    productControllers.getAllProducts(name, id)
+    const { name, id, category } = req.query
+    productControllers.getAllProducts(name, id, category)
         .then(response => {
             if (response.length > 0) {
                 res.status(200).json({ items: response.length, data: response })
