@@ -15,7 +15,7 @@ const getAllProducts = async (name, id, category) => {
         const data = await db.query(`SELECT * FROM product WHERE id LIKE ${id}`, { type: QueryTypes.SELECT });
         return data;
     } else if(category) {
-        const data = await db.query(`SELECT * FROM product WHERE name LIKE '%${category}%'`, { type: QueryTypes.SELECT });
+        const data = await db.query(`SELECT * FROM category WHERE name LIKE '%${category}%'`, { type: QueryTypes.SELECT });
         return data;
     } else {
         const data = await db.query(`SELECT * FROM product`,  { type: QueryTypes.SELECT });
